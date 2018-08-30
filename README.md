@@ -1,8 +1,19 @@
-DoubanNotesGrabber
+DoubanAnnotationGrabber 豆瓣读书笔记备份导出下载脚本
 ==================
+利用Scrapy 导出用户全部读书笔记到一个xml文件中。
 
-Grab Douban Notes
+### To install required packages
 
-豆瓣日记导出备份脚本
+`pip install -r requirements.txt`
 
-细节看[这里](http://cindyxiaoxiaoli.wordpress.com/2014/05/06/%E8%B1%86%E7%93%A3%E6%97%A5%E8%AE%B0%E5%AF%BC%E5%87%BA%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC-douban-notes-grabber/)
+### To run the script
+`scrapy crawl annotation -a username=<douban_username>`
+
+#### To change the output file path
+By default it outputs to `annotations.xml` in the same folder. The `FEED_URI` can be changed in `settings.py` or by specifying it in the command when running the script.
+
+`scrapy crawl annotation -a username=<douban_username> -o <output_filepath>`
+
+### Known Issues
+- 经导出后豆瓣读书笔记的<原文开始>tag变为`&gt; `。就先这么看吧还凑合。
+- 开头有个parsing exception，没具体看谁造成的回头再修吧。
